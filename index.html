@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="./dist/css/style.css">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Магазин кроссовок</title>
+</head>
+<body>
+    <header class="header">
+
+        <div class="header-nav__top">
+            <div class="container ">
+                <div class="row">
+                    <div class="col-5 offset-7 header-top__link">
+                        <a href="mailto:adminemail@mail.com">
+                            maks.riapolov@yandex.ru
+                        </a>
+                        <a href="tel:+89507174848">
+                            +7(950) 717-48-48
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <nav class="nav">
+            <div class="container">
+                <div class="row nav-box">
+                    <ul class="nav-box__items col-12">
+                        <li class="nav-item">
+                            <a class="nav-item__link" href="#header" class="">Главная</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item__link" href="#advantages" class="">Преимущества</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item__link" href="#catalog" class="">Каталог</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item__link" href="#catalog" class="">Отзывы</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item__link" href="#contact" class="">Контакты</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="header-banner">
+            <div class="container">
+                <h1 class="header-banner__title">Распродажа кроссовок</h1>
+                <p class="header-banner__description">
+                    <span>
+                        Небольшая качественная коллекции обуви распродаются со скидкой до 70%.<br> Успейте порадовать себя и своих близких.
+                    </span>
+                </p>
+                <a href="javascript:void(0)" class="header-banner__btn popup" data-popup="#header_modal">Заказать звонок</a>
+            </div>
+        </div>
+    </header>
+
+    <div id="header_modal" class="b-popup-bg">
+        <div class="b-popup">
+            <button class="b-popup__close">&times;</button>
+            <div class="b-popup__container">
+                <h4 class="b-popup__title">
+                    Заказать обратный звонок
+                </h4>
+                <div class="b-popup__description">
+                    Оставьте номер телефона и&nbsp;наши менеджеры свяжутся с&nbsp;Вами в&nbsp;ближайшее время
+                </div>
+                <form action="" class="popup-form">
+                    <input id="maskphone" class="popup-form__in" type="text" name="phone" placeholder="">
+                    <button class="popup-form__btn">Перезвоните мне</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="./dist/js/main.js"></script>
+</body>
+</html>
