@@ -1,0 +1,119 @@
+@import "../../node_modules/bootstrap/scss/bootstrap-grid";
+@import "../../node_modules/bootstrap/scss/mixins/breakpoints";
+
+body {
+  margin: 0;
+  padding: 0;
+}
+a {
+  color: black;
+  text-decoration: none;
+}
+.nav {
+  color: #b3c0b5;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+  padding: 15px 0;
+  background: #5f5f5f;
+  margin-bottom: 25px;
+  a {
+    padding-left: 10px;
+    color: #b3c0b5;
+  }
+}
+
+.nav-item{
+  display: flex;
+}
+
+.nav-block {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tst-btn {
+  cursor: pointer;
+  border-radius: 4px;
+  border: 1px solid #bbbbbb;
+  line-height: 20px;
+  padding: 4px 14px;
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-color: #95d94e;
+  background-image: linear-gradient(to bottom, #95d94e, #6bbd14);
+  background-repeat: repeat-x;
+  border-color: #0044cc #0044cc #002a80;
+  border-color: rgba(0, 0, 0, 0.1);
+  
+}
+
+.tst-btn:focus {
+  outline: 0;
+  box-shadow: inset 2px 2px 5px rgba(154, 147, 140, 0.5), 1px 1px 5px rgba(255, 255, 255, 1);
+}
+
+.button-create {
+  padding: 10px 15px;
+  svg {
+    fill: white;
+    background: #ccc;
+    padding: 5px;
+    border-radius: 4px;
+  }
+  div.button-create__block__block {
+    display: none;
+    position: absolute;
+  }
+  div.button-create__block:hover{
+    display: inline;
+    padding: 20px;
+    border-radius: 65px;
+    background: #cccccc6e;
+  }
+}
+
+table {
+  font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+  border-collapse: collapse;
+  color: #686461;
+  width: 100%;
+}
+
+caption {
+  padding: 10px;
+  color: white;
+  background: #6bbd14;
+  font-size: 2em;
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 30px;
+  border-radius: 5px;
+  box-shadow: 0 0px 12px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+th {
+  border-bottom: 3px solid #B9B29F;
+  padding: 10px;
+  text-align: left;
+}
+td {
+  padding: 10px;
+}
+tr:nth-child(odd) {
+  background: white;
+}
+tr:nth-child(even) {
+  background: #E8E6D1;
+}
+.icon-edit {
+  width: 20px;
+}
+
+.button-close {
+  text-decoration: none;
+  top: 0;
+  font-size: 20px;
+  left: 94%;
+  border: none;
+  background-color: transparent;
+  color: black;
+}
