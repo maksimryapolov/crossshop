@@ -12,7 +12,7 @@ class Route
         // подцепляем файл с классом контроллера
         $controller_file = ucfirst($this->controller).'.php';
         $controller_path = ROOT . "/application/controllers/".$controller_file;
-        
+
         if(file_exists($controller_path))
         {
             include $controller_path;
@@ -58,10 +58,9 @@ class Route
         $path_routs = ROOT . "/application/config/routs.php";
         $url_path = $_SERVER["REQUEST_URI"] == "/" ? "index" : trim($_SERVER["REQUEST_URI"], "/");
         $url_methods = require_once $path_routs;
-        
+
         foreach($url_methods as $key => $path)
         {
-
             if (preg_match("~$key~", $url_path)) {
 
                 $segments = preg_replace("~$key~", $path, $url_path);
@@ -69,7 +68,7 @@ class Route
                 $arSegments = explode("/", $segments);
 
                 $this->controller = ucfirst(array_shift($arSegments)) . "Controller";
-                
+
                 $this->action = "Action" . ucfirst(array_shift($arSegments));
 
                 $this->id = array_shift($arSegments);
@@ -77,6 +76,5 @@ class Route
             }
 
         }
-        
     }
 }

@@ -4,15 +4,18 @@ class Db
 {
     public static function connect()
     {
-        $nameDB = "shop_manager";
-        $login = "root";
+        $param = ROOT . "/application/config/db_param.php";
+        $param = include($param);
 
-        try {
-            $db = new PDO("mysql:dbname=$nameDB;host=localhost", $login, '');
-            $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        } catch (PDOException $e) {
-            die($e->getMessage());
-        }
+        $dsn = "mysql:dbname={$param['dbName']};host={$param['host']};charset={$param['charset']}";
+        $opt = [
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+            PDO::ATTR_EMULATE_PREPARES => false
+        ];
+
+        $db = new PDO($dsn, $param["login"], $param["pass"], $opt);
+
         return $db;
     }
 }

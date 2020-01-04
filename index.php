@@ -6,5 +6,5 @@ error_reporting(E_ALL);
 
 define("ROOT", $_SERVER["DOCUMENT_ROOT"]);
 session_start();
-$_SESSION["TEST"] = 123132;
+
 require_once ROOT . '/application/bootstrap.php';

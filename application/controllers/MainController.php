@@ -4,9 +4,9 @@ class MainController extends Controller
 {
     public function actionIndex()
     {
-        $modlaProduct = $this->model->init("MainModal");
-        $result = $modlaProduct->getListProduct();
-        $slides = $modlaProduct->getSlideProduct();
+        $modleProduct = $this->model->init("MainModel");
+        $result = $modleProduct->getListProduct();
+        $slides = $modleProduct->getSlideProduct();
 
         require_once ROOT . "/application/views/index/index.php";
     }

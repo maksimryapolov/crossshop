@@ -1,6 +1,6 @@
 <?php
 
-class MainModal extends Model
+class MainModel extends Model
 {
     public function getListProduct ()
     {
