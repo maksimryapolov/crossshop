@@ -14,24 +14,27 @@
                     <th>Редактировать</th>
                     <th>Удалить</th>
                 </tr>
-                <? foreach ($result as $item): ?>
-                    <tr>
-                        <td><?= $item["id_product"]; ?></td>
-                        <td><?= $item["name"]; ?></td>
-                        <td><?= $item["price"]; ?></td>
-                        <td><?= $item["size"]; ?></td>
-                        <td>
-                            <a class="button-close" href="/admin/edit/<?= $item['id_product']; ?>/">
-                                <img class="icon-edit" src="/dist/images/svg/edit.svg" alt="edit_icon">
-                            </a>
-                        </td>
-                        <td>
-                            <a class="button-close" href="">
-                                x
-                            </a>
-                        </td>
-                    </tr>
-                <? endforeach; ?>
+                <? if($result):
+                    foreach ($result as $item): ?>
+                        <tr>
+                            <td><?= $item["id_product"]; ?></td>
+                            <td><?= $item["name"]; ?></td>
+                            <td><?= $item["price"]; ?></td>
+                            <td><?= $item["size"]; ?></td>
+                            <td>
+                                <a class="button-close" href="/admin/edit/<?= $item['id_product']; ?>/">
+                                    <img class="icon-edit" src="/dist/images/svg/edit.svg" alt="edit_icon">
+                                </a>
+                            </td>
+                            <td>
+                                <a class="button-close" href="/admin/delete/<?= $item['id_product']; ?>/">
+                                    x
+                                </a>
+                            </td>
+                        </tr>
+                    <? endforeach; 
+                    endif;
+                    ?>
             </table>
         </div>
     </div>

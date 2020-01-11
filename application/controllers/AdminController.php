@@ -101,11 +101,6 @@ class AdminController extends Controller
 
                 if(empty($errors)) {
                     $res = $modleAdmin->editProductAction($id, $data);
-                    // if($id) {
-                    //     if (is_uploaded_file($_FILES["IMAGE"]["tmp_name"])) {
-                    //          move_uploaded_file($_FILES["IMAGE"]["tmp_name"], $_SERVER['DOCUMENT_ROOT'] . "/upload/cross/cross_{$id}.jpg");
-                    //     }
-                    // }
                     if($res) {
                         header("Location: /admin/");
                     }
@@ -122,7 +117,18 @@ class AdminController extends Controller
 
         }
         header("Location: /auth/");
+    }
+
+    public function ActionDelete($id)
+    {
+        $modleAdmin = $this->model->init("AdminModel");
         
-       
+        if($modleAdmin->CheckAuthAdmin()) {
+            $id = intval($id);
+            if ($modleAdmin->deleteProduct($id)) {
+                header("Location: /admin/");
+            }
+        }
+        header("Location: /auth/");
     }
 }

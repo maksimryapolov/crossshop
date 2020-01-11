@@ -8,7 +8,9 @@
 <body>
 <nav class="nav">
     <div class="container nav-block">
-        <div>Административная панель</div>
+        <div>
+            <a href="/admin/"> Административная панель</a>
+        </div>
         <div class="nav-item">
             <img src="/dist/images/svg/undo.svg" alt="back">
             <a class="nav-link" href="/">На сайт</a>

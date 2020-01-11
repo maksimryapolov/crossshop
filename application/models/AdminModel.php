@@ -154,6 +154,18 @@ class AdminModel
         }
     }
 
+    public function deleteProduct($id)
+    {
+        if(is_int($id)) {
+            $db = new Db();
+            $pdo = $db->connect();
+
+            $stat = $pdo->prepare("DELETE FROM product WHERE id_product=:id");
+            $stat->bindParam("id", $id, PDO::PARAM_INT);
+            return $stat->execute();
+        }
+    }
+
     private function transformStringToArray($var)
     {
         if(is_string($var)) {

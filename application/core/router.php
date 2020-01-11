@@ -29,7 +29,7 @@ class Route
         // создаем контроллер
         $controller = new $this->controller;
         $action = $this->action;
-        
+
         if(method_exists($controller, $action))
         {
             // вызываем действие контроллера
@@ -73,7 +73,6 @@ class Route
                 $this->id = array_shift($arSegments);
 
             }
-
         }
     }
 }
