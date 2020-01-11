@@ -55,7 +55,7 @@ function clean ()
 
 function script ()
 {
-    return gulp.src(['node_modules/jquery/dist/jquery.js', "./app/js/jquery.maskedinput.min.js", './app/js/main.js'])
+    return gulp.src(['node_modules/jquery/dist/jquery.js', "./app/js/jquery.maskedinput.min.js", './app/js/main.js', './app/js/admin.js'])
         .pipe(concat('main.js'))
         .pipe(uglify({
             toplevel: true

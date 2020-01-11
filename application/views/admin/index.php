@@ -10,29 +10,33 @@
                     <th>Идентификатор</th>
                     <th>Наименование товара</th>
                     <th>Цена, руб.</th>
+                    <th>Размеры</th>
                     <th>Редактировать</th>
                     <th>Удалить</th>
                 </tr>
-                <tr>
-                    <td>123</td>
-                    <td>Ассорти из овощей, зелени и сыра</td>
-                    <td>190</td>
-                    <td>
-                        <a href="button-close">
-                            <img class="icon-edit" src="/dist/images/svg/edit.svg" alt="edit_icon">
-                        </a>
-                    </td>
-                    <td>
-                        <a class="button-close" href="">
-                            x
-                        </a>
-                    </td>
-                </tr>
+                <? foreach ($result as $item): ?>
+                    <tr>
+                        <td><?= $item["id_product"]; ?></td>
+                        <td><?= $item["name"]; ?></td>
+                        <td><?= $item["price"]; ?></td>
+                        <td><?= $item["size"]; ?></td>
+                        <td>
+                            <a class="button-close" href="/admin/edit/<?= $item['id_product']; ?>/">
+                                <img class="icon-edit" src="/dist/images/svg/edit.svg" alt="edit_icon">
+                            </a>
+                        </td>
+                        <td>
+                            <a class="button-close" href="">
+                                x
+                            </a>
+                        </td>
+                    </tr>
+                <? endforeach; ?>
             </table>
         </div>
     </div>
-    <button class="tst-btn">
+    <a href="/admin/product/add/" class="btn-link">
         Добавить товар
-    </button>
+    </a>
 </div>
 <? require_once  ROOT . "/application/views/admin/layots/footer.php"; ?>

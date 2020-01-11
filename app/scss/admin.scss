@@ -4,6 +4,7 @@
 body {
   margin: 0;
   padding: 0;
+  font-family: 'Arial';
 }
 a {
   color: black;
@@ -31,12 +32,13 @@ a {
   justify-content: space-between;
 }
 
-.tst-btn {
+.btn-link {
+  display: inline-block;
   cursor: pointer;
   border-radius: 4px;
   border: 1px solid #bbbbbb;
   line-height: 20px;
-  padding: 4px 14px;
+  padding: 6px 12px;
   color: #ffffff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   background-color: #95d94e;
@@ -116,4 +118,48 @@ tr:nth-child(even) {
   border: none;
   background-color: transparent;
   color: black;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+
+  &__item {
+    display: block;
+    margin-top: 30px;
+  }
+
+  .checkbox {
+    .form-group__title {
+      display: inline;
+    }
+
+    .form-group__input {
+      width: 17px;
+      height: 17px;
+    }
+  }
+  .select {
+    .form-group__input {
+      width: 160px;
+    }
+  }
+
+  &__title {
+    display: block;
+    margin-bottom: 7px;
+    font-size: 1.2em;
+  }
+
+  .image {
+    display: flex;
+    flex-direction: column;
+    img {
+      width: 200px;
+      margin-bottom: 15px;
+    }
+  }
+}
+.errors {
+  color: red;
 }
