@@ -1,4 +1,5 @@
 <?php
+require ROOT . '/vendor/autoload.php';
 require_once ROOT . "/application/config/db.php";
 
 require_once ROOT . "/application/core/Model.php";

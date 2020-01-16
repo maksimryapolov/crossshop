@@ -21,6 +21,68 @@
     </div>
 </footer>
 
+<div id="header_modal" class="b-popup-bg">
+    <div class="b-popup">
+        <button class="b-popup__close">&times;</button>
+        <div class="b-popup__container">
+            <h4 class="b-popup__title">
+                Заказать обратный звонок
+            </h4>
+            <div class="b-popup__description">
+                Оставьте номер телефона и&nbsp;наши менеджеры свяжутся с&nbsp;Вами в&nbsp;ближайшее время
+            </div>
+            <div class="info" id="success"></div>
+            <form action="" class="popup-form">
+                <input class="popup-form__in maskphone" required type="text" data-required="true" autocomplete="off" name="phone" placeholder="Введите номер телефона...">
+                <button class="popup-form__btn">Перезвоните мне</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div id="header_modal-question" class="b-popup-bg">
+    <div class="b-popup">
+        <button class="b-popup__close">&times;</button>
+        <div class="b-popup__container">
+            <h4 class="b-popup__title">
+                Заказать обратный звонок
+            </h4>
+            <div class="b-popup__description">
+                Оставьте номер телефона и&nbsp;наши менеджеры свяжутся с&nbsp;Вами в&nbsp;ближайшее время
+            </div>
+            <div class="info" id="success"></div>
+            <form action="" class="popup-form">
+                <input class="popup-form__in maskphone" data-required="true" autocomplete="off" type="text" required name="phone" placeholder="Введите номер телефона...">
+                <textarea class="popup-form__in textarea" name="question" placeholder="Введите ваш вопрос..." cols="10" rows="10"></textarea>
+                <button class="popup-form__btn">Перезвоните мне</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div id="header_modal-product" class="b-popup-bg">
+    <div class="b-popup">
+        <button class="b-popup__close">&times;</button>
+        <div class="b-popup__container">
+            <h4 class="b-popup__title">
+                Заказать обратный звонок
+            </h4>
+            <div class="b-popup__description">
+                Оставьте номер телефона и&nbsp;наши менеджеры свяжутся с&nbsp;Вами в&nbsp;ближайшее время
+            </div>
+            <div class="info" id="success"></div>
+            <form action="" class="popup-form">
+                <input class="popup-form__in" id="nameProduct" data-required="true" autocomplete="off" required type="text" name="product" placeholder="Название товара...">
+                <input class="popup-form__in" type="text" data-required="true" required autocomplete="off" name="user" placeholder="Введите имя...">
+                <input class="popup-form__in maskphone" data-required="true" required autocomplete="off" type="text" name="phone" placeholder="Введите номер телефона...">
+                <input type="hidden" class="popup-form__in" name="id_product" id="idProduct" value="">
+                <input type="hidden" class="popup-form__in" name="size" id="sizeProduct" value="">
+                <button class="popup-form__btn">Перезвоните мне</button>
+            </form>
+        </div>
+    </div>
+</div>
+
 <script src="../../dist/js/main.js"></script>
 </body>
 </html>

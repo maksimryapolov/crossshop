@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <link rel="stylesheet" href="libs/owl-carousel/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="libs/owl-carousel/css/owl.theme.default.min.css">
     <link rel="stylesheet" href="dist/css/style.css">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Магазин кроссовок</title>
@@ -121,7 +123,7 @@
                             <div class="advantages-main__item-icon"></div>
                             <span>Бесплатная консультация!</span>
                         </div> -->
-                        <a href="javascript:void(0)" data-popup="#header_modal" class="advantages-main__btn popup button_servis">
+                        <a href="javascript:void(0)" data-popup="#header_modal-question" class="advantages-main__btn popup button_servis">
                             Получить консультацию
                         </a>
                     </div>
@@ -129,7 +131,7 @@
             </div>
         </div>
     </section>
-
+    
     <section class="catalog" id='catalog'>
         <div class="container">
             <div class="row">
@@ -151,25 +153,21 @@
                                                 <span class="catalog-product__price">
                                                     900 руб.
                                                 </span>
+                                                
                                             <div class="catalog-product__box-sizes">
-                                                    <span class="catalog-product__box-sizes-item">
-                                                        40
-                                                    </span>
-                                                <span class="catalog-product__box-sizes-item">
-                                                        41
-                                                    </span>
-                                                <span class="catalog-product__box-sizes-item">
-                                                        42
-                                                    </span>
-                                                <span class="catalog-product__box-sizes-item">
-                                                        43
-                                                    </span>
-                                                <span class="catalog-product__box-sizes-item">
-                                                        44
-                                                    </span>
-                                                <span class="catalog-product__box-sizes-item">
-                                                        45
-                                                    </span>
+                                                <div class="wrapper">
+                                                    <div class="dropdown">
+                                                        <label data-value="">Выберите размер</label>
+                                                        <ul>
+                                                            <li data-value="40">40</li>
+                                                            <li data-value="41">41</li>
+                                                            <li data-value="42">42</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <!-- <span class="catalog-product__box-sizes-item">
+                                                    40
+                                                </span> -->
                                             </div>
                                         </div>
                                         <a href="javascrip:void(0)" data-popup="#header_modal-product" class="catalog-product__btn button_servis popup">
@@ -188,30 +186,14 @@
     <section class="b-popular">
         <div class="container">
             <h1 class="b-popular__title">Популярные товары</h1>
-
-            <div class="slider">
-                <div class="slider__wrapper">
-                    <div class="slider__item">
-                        <!--<div style="height: 250px; background: orange;">1</div>-->
-                        <img class="slider__item-img" src="./dist/images/cross1.jpg" alt="">
-                    </div>
-                    <div class="slider__item">
-                        <!--<div style="height: 250px; background: url('./dist/images/cross1.jpg');"></div>-->
-                        <img class="slider__item-img" src="./dist/images/cross2.jpg" alt="">
-                    </div>
-                    <div class="slider__item">
-                        <!--<div style="height: 250px; background: violet;">3</div>-->
-                        <img class="slider__item-img" src="./dist/images/cross3.jpg" alt="">
-                    </div>
-                    <div class="slider__item">
-                        <!--<div style="height: 250px; background: coral;">4</div>-->
-                        <img class="slider__item-img" src="./dist/images/cross4.jpg" alt="">
-                    </div>
-                </div>
-                <a class="slider__control slider__control_left" href="#" role="button"></a>
-                <a class="slider__control slider__control_right slider__control_show" href="#" role="button"></a>
+            <div class="owl-carousel owl-theme">
+                <div class="slider__item" style="background-image:url('/dist/images/cross1.jpg')"></div>
+                <div class="slider__item" style="background-image:url('/dist/images/cross2.jpg')"></div>
+                <div class="slider__item" style="background-image:url('/dist/images/cross3.jpg')"></div>
+                <div class="slider__item" style="background-image:url('/dist/images/cross4.jpg')"></div>
             </div>
         </div>
+    </div>
     </section>
 </main>
 
@@ -256,9 +238,29 @@
     </div>
 </div>
 
+<div id="header_modal-question" class="b-popup-bg">
+    <div class="b-popup">
+        <button class="b-popup__close">&times;</button>
+        <div class="b-popup__container">
+            <h4 class="b-popup__title">
+                Заказать обратный звонок
+            </h4>
+            <div class="b-popup__description">
+                Оставьте номер телефона и&nbsp;наши менеджеры свяжутся с&nbsp;Вами в&nbsp;ближайшее время
+            </div>
+            <form action="" class="popup-form">
+                <input class="popup-form__in maskphone" type="text" name="phone" placeholder="Введите номер телефона...">
+                <textarea class="popup-form__in textarea" name="question" placeholder="Введите ваш вопрос..." cols="10" rows="10"></textarea>
+                <button class="popup-form__btn">Перезвоните мне</button>
+            </form>
+        </div>
+    </div>
+</div>
+
 <div id="header_modal-product" class="b-popup-bg">
     <div class="b-popup">
         <button class="b-popup__close">&times;</button>
+        
         <div class="b-popup__container">
             <h4 class="b-popup__title">
                 Заказать обратный звонок
@@ -277,5 +279,6 @@
 </div>
 
 <script src="../../dist/js/main.js"></script>
+
 </body>
 </html>

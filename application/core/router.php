@@ -29,7 +29,7 @@ class Route
         // создаем контроллер
         $controller = new $this->controller;
         $action = $this->action;
-
+        
         if(method_exists($controller, $action))
         {
             // вызываем действие контроллера
@@ -58,6 +58,7 @@ class Route
         $path_routs = ROOT . "/application/config/routs.php";
         $url_path = $_SERVER["REQUEST_URI"] == "/" ? "index" : trim($_SERVER["REQUEST_URI"], "/");
         $url_methods = require_once $path_routs;
+        
         foreach($url_methods as $key => $path)
         {
             if (preg_match("~$key~", $url_path)) {

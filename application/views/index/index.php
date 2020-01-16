@@ -54,7 +54,7 @@
                             <div class="advantages-main__item-icon"></div>
                             <span>Бесплатная консультация!</span>
                         </div> -->
-                        <a href="javascript:void(0)" data-popup="#header_modal" class="advantages-main__btn popup button_servis">
+                        <a href="javascript:void(0)" data-popup="#header_modal-question" class="advantages-main__btn popup button_servis">
                             Получить консультацию
                         </a>
                     </div>
@@ -77,7 +77,7 @@
                                 <? foreach ($result as $item): ?>
                                     <div class="col-md-4 col-sm-6">
                                         <div class="catalog-product__box">
-                                            <img class="catalog-product__img" src="./dist/images/cross1.jpg" alt="">
+                                            <img class="catalog-product__img" src="<?= $item['image']; ?>" alt="">
                                             <p class="catalog-product__name">
                                                 <?= $item["name"]; ?>
                                             </p>
@@ -86,16 +86,24 @@
                                                      Цена: <?= $item["show_price"]; ?>
                                                 </span>
                                                 <div class="catalog-product__box-sizes">
-                                                    Рзмер:
-                                                    <? if(is_array($item["size"])): ?>
-                                                        <? foreach ($item["size"] as $size): ?>
-                                                            <span class="catalog-product__box-sizes-item">
-                                                                <?= $size; ?>
-                                                            </span>
-                                                        <? endforeach; ?>
-                                                    <? endif; ?>
+                                                    <div class="wrapper">
+                                                        <div class="dropdown">
+                                                            <label data-value="">Выберите размер</label>
+                                                            <ul>
+                                                                <? if(is_array($item["size"])): ?>
+                                                                    <? foreach ($item["size"] as $size): ?>
+                                                                        <li data-value="<?= $size; ?>">
+                                                                            <?= $size; ?>
+                                                                        </li>
+                                                                    <? endforeach; ?>
+                                                                <? endif; ?>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
                                                 </div>
+                                                
                                             </div>
+                                            <span class="catalog-product__box-avl">В наличии: <?= $item["avl"]; ?></span>
                                             <a href="javascrip:void(0)" data-id="<?= $item["id_product"]; ?>" data-popup="#header_modal-product" class="catalog-product__btn button_servis popup">
                                                 Заказать
                                             </a>
@@ -113,69 +121,13 @@
     <section class="b-popular">
         <div class="container">
             <h1 class="b-popular__title">Популярные товары</h1>
-
-            <div class="slider">
-                <div class="slider__wrapper">
-                    <div class="slider__item">
-                        <!--<div style="height: 250px; background: orange;">1</div>-->
-                        <img class="slider__item-img" src="./dist/images/cross1.jpg" alt="">
-                    </div>
-                    <div class="slider__item">
-                        <!--<div style="height: 250px; background: url('./dist/images/cross1.jpg');"></div>-->
-                        <img class="slider__item-img" src="./dist/images/cross2.jpg" alt="">
-                    </div>
-                    <div class="slider__item">
-                        <!--<div style="height: 250px; background: violet;">3</div>-->
-                        <img class="slider__item-img" src="./dist/images/cross3.jpg" alt="">
-                    </div>
-                    <div class="slider__item">
-                        <!--<div style="height: 250px; background: coral;">4</div>-->
-                        <img class="slider__item-img" src="./dist/images/cross4.jpg" alt="">
-                    </div>
-                </div>
-                <a class="slider__control slider__control_left" href="#" role="button"></a>
-                <a class="slider__control slider__control_right slider__control_show" href="#" role="button"></a>
+            <div class="owl-carousel owl-theme">
+                <? foreach($slides as $slide): ?>
+                    <div class="slider__item" style="background-image:url('<?= $slide; ?>')"></div>
+                <? endforeach; ?>
             </div>
         </div>
     </section>
 </main>
-
-<div id="header_modal" class="b-popup-bg">
-    <div class="b-popup">
-        <button class="b-popup__close">&times;</button>
-        <div class="b-popup__container">
-            <h4 class="b-popup__title">
-                Заказать обратный звонок
-            </h4>
-            <div class="b-popup__description">
-                Оставьте номер телефона и&nbsp;наши менеджеры свяжутся с&nbsp;Вами в&nbsp;ближайшее время
-            </div>
-            <form action="" class="popup-form">
-                <input class="popup-form__in maskphone" type="text" name="phone" placeholder="Введите номер телефона...">
-                <button class="popup-form__btn">Перезвоните мне</button>
-            </form>
-        </div>
-    </div>
-</div>
-
-<div id="header_modal-product" class="b-popup-bg">
-    <div class="b-popup">
-        <button class="b-popup__close">&times;</button>
-        <div class="b-popup__container">
-            <h4 class="b-popup__title">
-                Заказать обратный звонок
-            </h4>
-            <div class="b-popup__description">
-                Оставьте номер телефона и&nbsp;наши менеджеры свяжутся с&nbsp;Вами в&nbsp;ближайшее время
-            </div>
-            <form action="" class="popup-form">
-                <input class="popup-form__in" type="text" name="name" placeholder="Введите имя...">
-                <input class="popup-form__in maskphone" type="text" name="phone" placeholder="Введите номер телефона...">
-                <input class="popup-form__in" type="text" name="product" placeholder="Название товара...">
-                <button class="popup-form__btn">Перезвоните мне</button>
-            </form>
-        </div>
-    </div>
-</div>
 
 <?php require_once ROOT . "/application/views/layouts/footer.php"?>

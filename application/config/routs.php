@@ -8,6 +8,7 @@ return array(
     "admin/edit/([0-9]+)" => "admin/edit/$1",
     "admin/delete/([0-9]+)" => "admin/delete/$1",
 
-    "/([0-9]+)/" => "main/detail/$1",
+    "callback" => "main/order",
+
     "index" => "main/index",
 );

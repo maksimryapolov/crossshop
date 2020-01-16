@@ -265,6 +265,11 @@ ul {
                 }
             }
         }
+        &-avl {
+            margin-top:20px;
+            border-bottom: 1px solid #6bbd14;
+            display:inline-block;
+        }
     }
 
     &-product__container {
@@ -292,7 +297,7 @@ ul {
     &-product__btn {
         display: block;
         width: 50%;
-        margin: 15px auto 0 auto;
+        margin: 30px auto 0 auto;
     }
 }
 
@@ -341,83 +346,25 @@ ul {
 /*
     Стили для слайдера
 */
-
-.slider {
-    position: relative;
-    overflow: hidden;
-    &__wrapper {
-        display: flex;
-        transition: transform 0.6s ease;
-    }
-}
-
 .slider__item {
-    flex: 0 0 50%;
-    max-width: 50%;
-    text-align: center;
-    &-img {
-        width: 300px;
+    transition: background-size 0.35s;
+    width: 350px;
+    height: 200px;
+    background-size: 100%;
+    background-position: center;
+    border-radius: 5px;
+    &:hover {
+        transition-duration:  1s;
+        background-size: 400px;
     }
 }
 
-.slider__control {
-    position: absolute;
-    top: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    color: #fff;
-    text-align: center;
-    opacity: 0.5;
-    height: 50px;
-    transform: translateY(-50%);
+.owl-carousel {
+    z-index: -1;
 }
 
-.slider__control:hover,
-.slider__control:focus {
-    color: #fff;
-    text-decoration: none;
-    outline: 0;
-    opacity: .9;
-}
 
-.slider__control_left {
-    left: 0;
-}
 
-.slider__control_right {
-    right: 0;
-}
-
-.slider__control::before {
-    content: '';
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    background: transparent no-repeat center center;
-    background-size: 100% 100%;
-}
-
-.slider__control_left::before {
-    //background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E");
-    background-image: url('../images/svg/back.svg');
-}
-
-.slider__control_right::before {
-    //background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E");
-    background-image: url('../images/svg/next.svg');
-}
-
-.slider__item>div {
-    line-height: 250px;
-    font-size: 100px;
-    text-align: center;
-}
-
-/*
-    Конец стилей сладера
-*/
 .b-popup-bg {
     display: none;
     position: fixed;
@@ -445,6 +392,16 @@ ul {
         border-radius: 5px;
         width: 600px;
         box-shadow: 0px 0px 10px #000;
+
+        .info {
+            margin-bottom: 15px;
+        }
+        .success {
+            color: #5ac617;
+        }
+        .error {
+            color: #DF302F;
+        }
     }
 
     .b-popup__title {
@@ -488,6 +445,10 @@ ul {
                 outline: 0px;
             }
         }
+        .textarea {
+            resize: none;
+            height: 100px;
+        }
         &__btn {
             width: 100%;
             border-radius: 50px;
@@ -509,5 +470,71 @@ ul {
 
 .b-open-bg {
     display: block;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+
+    .dropdown {
+        margin: 0px auto;
+        position: relative;
+        max-width: 400px;
+        label {
+            width: 163px;
+            display: block;
+            padding: 8px 16px;
+            border: 1px solid #6bbd14;
+            cursor: pointer;
+            border-radius: 45px;
+        }
+        ul {
+            list-style: none;
+            position: absolute;
+            width: 100%;
+            z-index: 1;
+            li {
+                padding: 0px 16px;
+                background: #fff;
+                color: #343838;
+                text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.8);
+                height: 0px;
+                overflow: hidden;
+                cursor: pointer;
+                transition: height 0.1s linear 0s;
+                &:hover,
+                &.selected {
+                    background: #24bed3;
+                    color: #FAFAFA;
+                    border-left: 2px solid #6bbd14 !important;
+                    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+                }
+
+            }
+        }
+    }
+    .open {
+        label {
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+    }
+
+    .open ul  {
+        li {
+            padding: 8px 16px;
+            height: 34px;
+            border: 1px solid #6bbd14;
+            border-top: none;
+            transition: .2s;
+        }
+        
+        li:last-child {
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+        }
+    }
 }
 
