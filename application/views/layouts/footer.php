@@ -3,20 +3,35 @@
         <div class="b-footer__title">
             Распродажа известных брендов спортивной обуви
         </div>
-        <div class="b-footer__contact">
-            <a href="javascript:void(0)" class="b-footer__btn popup button_servis" data-popup="#header_modal">Заказать звонок</a>
-            <div class="b-footer__info">
+        <div class="b-footer__block">
+            <div class="b-footer__contact">
                 <div>
-                    <span class="b-footer__info-item">Email:</span>
-                    <a href="mailto:maks.riapolov@yandex.ru">maks.riapolov@yandex.ru</a>
+                    <a href="javascript:void(0)" class="b-footer__btn popup button_servis" data-popup="#header_modal">Заказать звонок</a>
                 </div>
-                <div>
-                    <span class="b-footer__info-item">Телефон:</span>
-                    <a href="tel:89040870275">
-                        89040870275
-                    </a>
+                <div class="b-footer__info">
+                    <div>
+                        <span class="b-footer__info-item">Email:</span>
+                        <a href="mailto:maks.riapolov@yandex.ru">maks.riapolov@yandex.ru</a>
+                    </div>
+                    <div>
+                        <span class="b-footer__info-item">Телефон:</span>
+                        <a href="tel:89040870275">
+                            89040870275
+                        </a>
+                    </div>
                 </div>
             </div>
+            <div>
+                <b>Мы в соц. сетях</b>
+                <div class="social-icons">
+                    <a class="icon-vk" href="https://vk.com/cross_shop31" target="_blank"></a>
+                    <a class="icon-inst" href="" target="_blank"></a>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="b-footer__copy">
+            &copy; 2019 &ndash; 2020 Cross-Shop. All Rights Reserved
         </div>
     </div>
 </footer>

@@ -317,15 +317,41 @@ ul {
 
 .b-footer {
     background-color: #ececec;
-    padding: 50px 0;
+    padding: 50px 0 10px 0;
 
     &__title {
         font-family: Arial, Helvetica, sans-serif;
         font-size: 1.8em;
         color: rgba(0,0,0,0.8);
     }
-    &__contact {
+    &__block {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
         margin-top: 30px;
+        margin-bottom: 35px;
+        .social-icons {
+            display: flex;
+            margin-top: 13px;
+            .icon-vk {
+                width: 50px;
+                height: 50px;
+                background-image: url('../images/svg/vk.svg');
+                margin-right: 10px;
+            }
+            .icon-inst {
+                width: 50px;
+                height: 50px;
+                background-image: url('../images/svg/instagram-sketched.svg');
+            }
+        }
+    }
+    &__copy {
+        margin: 10px;
+        font-size: 14px;
+        text-align: center;
+    }
+    &__contact {
         display: flex;
 
     }
@@ -362,8 +388,6 @@ ul {
 .owl-carousel {
     z-index: -1;
 }
-
-
 
 .b-popup-bg {
     display: none;
