@@ -14,9 +14,9 @@
 <header class="header">
     <div class="header-nav__top">
         <div class="container header-group">
-            <div class="row">
-                <div class="col-6">
-                    <img src="./app/images/svg/logo.svg" alt="logo">
+            <div class="row header-block">
+                <div class="col-8 col-sm-6">
+                    <img class="header-logo" src="./app/images/svg/logo.svg" alt="logo">
                 </div>
                 <div class="col-6">
                     <div class="header-top__link">

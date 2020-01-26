@@ -11,7 +11,11 @@
     src : url('../fonts/Roboto-Thin.ttf');
 }
 
-// breakpoint-infix(sm, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px))
+.testing {
+    @include media-breakpoint-down(xs) {
+        color: red;
+    }
+}
 
 body {
     padding: 0;
@@ -44,6 +48,21 @@ ul {
 
 .header {
     margin-top: 10px;
+    &-block {
+        @include media-breakpoint-down(md) {
+            display: flex;
+            align-items: center;
+        }
+        @include media-breakpoint-down(xs) {
+            flex-direction: column;
+            width: 100%;
+        }
+    }
+    &-logo {
+        @include media-breakpoint-down(xs) {
+            width: 100%;
+        }
+    }
     &-group {
         padding: 20px 0;
     }
@@ -54,12 +73,25 @@ ul {
 
     .header-top__link {
         text-align: right;
+        @include media-breakpoint-down(md) {
+            display: flex;
+            flex-direction: column;
+        }
+        @include media-breakpoint-down(xs) {
+            text-align: center;
+            font-size: 13px;
+        }
+
         a {
             color: #a9d0d4;
             font-size: 1.2em;
 
             &:first-child {
                 margin-right: 15px;
+                @include media-breakpoint-down(md) {
+                    margin: 0 0 10px 0;
+
+                }
             }
         }
     }
@@ -86,7 +118,6 @@ ul {
                 }
             }
         }
-
     }
     .header-banner {
         background-image: url("../images/banner.jpg");
@@ -96,10 +127,14 @@ ul {
         background-position-y: -226px;
         background-size: cover;
         font-family: RobotoRegular, sans-serif;
+
+        @include media-breakpoint-down(sm) {
+            background-position: center;
+        }
         @media (max-width: 1140px ) {
-            background-size: auto;
             padding: 10px 0 20px 0 ;
         }
+
 
         &__title {
             font-size: 3.9em;
@@ -129,6 +164,15 @@ ul {
 
 .advantages {
     background: #f9f9f9;
+
+    &-main {
+        img {
+            width: 450px;
+            @include media-breakpoint-up(xl) {
+                width: 100%;
+            }
+        }
+    }
 
     &__item-box {
       padding: 50px 30px;
@@ -174,6 +218,13 @@ ul {
     padding: 80px 0;
     font-weight: 600;
 
+    &__image-block {
+        color:red;
+        @include media-breakpoint-down(md) {
+            display: none;
+        }
+    }
+
     &__box {
         display: flex;
         flex-direction: column;
@@ -191,12 +242,20 @@ ul {
     }
     &__description {
         font-size: 1.4em;
+        @include media-breakpoint-down(md) {
+            line-height: 31px;
+            margin-bottom: 32px;
+        }
     }
 
     &__item {
         display: flex;
         align-items: center;
         font-size: 1.2em;
+
+        @include media-breakpoint-down(md) {
+            margin-bottom: 15px;
+        }
 
         &-icon {
             width: 25px;
@@ -228,6 +287,10 @@ ul {
     background-color: #f9f9f9;
     &__box {
         text-align: center;
+    }
+    &__block {
+        display: flex;
+        justify-content: center;
     }
     &__title {
         font-size: 2.4em;
@@ -277,8 +340,15 @@ ul {
     }
 
     &-product__img {
-        width: 305px;
-        margin: 5px;
+        //width: 305px;
+        //height: 200px;
+        //margin: 5px;
+        //background-image: url("../images/cross1.jpg");
+        width: 100%;
+        height: 200px;
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
     }
 
     &-product__name {
@@ -323,6 +393,9 @@ ul {
         font-family: Arial, Helvetica, sans-serif;
         font-size: 1.8em;
         color: rgba(0,0,0,0.8);
+        @include media-breakpoint-down(sm) {
+            text-align: center;
+        }
     }
     &__block {
         display: flex;
@@ -345,6 +418,9 @@ ul {
                 background-image: url('../images/svg/instagram-sketched.svg');
             }
         }
+        @include media-breakpoint-down(sm) {
+            flex-direction: column;
+        }
     }
     &__copy {
         margin: 10px;
@@ -353,6 +429,9 @@ ul {
     }
     &__contact {
         display: flex;
+        @include media-breakpoint-down(sm) {
+            margin-bottom: 25px;
+        }
 
     }
     &__btn {
@@ -379,13 +458,26 @@ ul {
     background-size: 100%;
     background-position: center;
     border-radius: 5px;
+    @include media-breakpoint-down(md) {
+        width: 330px;
+        height: 187px;
+    }
+    @include media-breakpoint-down(sm) {
+        width: 240px;
+        height: 132px;
+    }
+    @include media-breakpoint-down(xs) {
+        width: 100%;
+        height: 103px;
+    }
+
     &:hover {
         transition-duration:  1s;
         background-size: 400px;
     }
 }
 
-.owl-carousel {
+.down-index {
     z-index: -1;
 }
 
@@ -416,6 +508,10 @@ ul {
         border-radius: 5px;
         width: 600px;
         box-shadow: 0px 0px 10px #000;
+        @include media-breakpoint-down(xs) {
+            width: 99%;
+            padding: 18px;
+        }
 
         .info {
             margin-bottom: 15px;
@@ -448,6 +544,9 @@ ul {
         color: #a3a3a3;
         &:hover {
             cursor: pointer;
+        }
+        @include media-breakpoint-down(xs) {
+            left: 90%;
         }
     }
 

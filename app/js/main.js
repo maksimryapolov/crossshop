@@ -26,7 +26,7 @@ $(".maskphone").mask('+7(999) 999 99-99');
             inputId.val($(this).attr('data-id'));
             inputName.attr('disabled', true);
         }
-
+        $('#carousel').addClass('down-index');
         $(id_modal).find('.b-popup').slideDown(time);
     });
 
@@ -117,6 +117,7 @@ $(".maskphone").mask('+7(999) 999 99-99');
                 $(e).find('input').val("");
             }
         }
+        $('#carousel').removeClass('down-index');
     }
 
     close_btn.on('click', close);
@@ -157,8 +158,18 @@ $(".maskphone").mask('+7(999) 999 99-99');
         $(".owl-carousel").owlCarousel({
             items:3,
             loop: true,
-            autoplay: true,
-            center: true,            
+            //autoplay: true,
+            center: true,
+            responsive : {
+                0: {
+                    items: 2,
+                    center: false,
+                    margin: 5
+                },
+                1200: {
+                    items: 3,
+                }
+            }
         });
       });
 })();

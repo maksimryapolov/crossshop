@@ -28,10 +28,10 @@
     <section class="advantages-main">
         <div class="container">
             <div class="row">
-                <div class="col-sm-6">
+                <div class="col-lg-6 advantages-main__image-block">
                     <img src="./dist/images/advantages.jpg" class="advantages-main__img" alt="">
                 </div>
-                <div class="col-sm-6">
+                <div class="col-lg-6">
                     <div class="advantages-main__box">
                         <h2 class="advantages-main__title">Почему стоит купить у нас</h2>
                         <div class="advantages-main__description">
@@ -73,11 +73,11 @@
                             Ниже представлены модели из нашего ассортимента. Свяжитесь с нами, чтобы получить более бодробную информацию.
                         </div>
                         <div class="catalog-product__container">
-                            <div class="row">
+                            <div class="row catalog__block">
                                 <? foreach ($result as $item): ?>
-                                    <div class="col-md-4 col-sm-6">
+                                    <div class="col-10 col-lg-4 col-md-6">
                                         <div class="catalog-product__box">
-                                            <img class="catalog-product__img" src="<?= $item['image']; ?>" alt="">
+                                            <div class="catalog-product__img" style="background-image: url('<?= $item['image']; ?>');"></div>
                                             <p class="catalog-product__name">
                                                 <?= $item["name"]; ?>
                                             </p>
@@ -121,7 +121,7 @@
     <section class="b-popular">
         <div class="container">
             <h1 class="b-popular__title">Популярные товары</h1>
-            <div class="owl-carousel owl-theme">
+            <div class="owl-carousel owl-theme" id="carousel">
                 <? foreach($slides as $slide): ?>
                     <div class="slider__item" style="background-image:url('<?= $slide; ?>')"></div>
                 <? endforeach; ?>
