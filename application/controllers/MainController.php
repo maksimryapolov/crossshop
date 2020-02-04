@@ -1,13 +1,19 @@
 <?php
 
+use Components\pagination\Pagination;
+
 class MainController extends Controller
 {
+    const DEFAULT_START_PAGIN = 1;
+
     public function actionIndex()
     {
         $modleProduct = $this->model->init("MainModel");
-        $result = $modleProduct->getListProduct();
-        $slides = $modleProduct->getSlideProduct();
+        $page = (isset($_REQUEST['AJAX']) && isset($_REQUEST["VALUE"])) ? intval($_REQUEST["VALUE"]) : self::DEFAULT_START_PAGIN;
 
+        $result = $modleProduct->getListProduct($page);
+        $slides = $modleProduct->getSlideProduct();
+        $page++;
         require_once ROOT . "/application/views/index/index.php";
     }
 

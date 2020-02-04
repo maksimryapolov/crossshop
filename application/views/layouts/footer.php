@@ -98,6 +98,13 @@
     </div>
 </div>
 
+<div class="lds-ring" id="spinner">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+</div>
+
 <script src="../../dist/js/main.js"></script>
 </body>
 </html>

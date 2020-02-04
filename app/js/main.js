@@ -7,28 +7,32 @@ $(".maskphone").mask('+7(999) 999 99-99');
     var time = 300;
 
 
-    $(".popup").on('click', function () {
-        var itemProduct = this.closest('.catalog-product__box');
-    
-        id_modal = this.getAttribute('data-popup');
-        $('.owl-item').addClass("fixed");
-        $(id_modal).addClass('b-open-bg');
-        
-        if(itemProduct) {
-            var idProduct = $(this).attr("data-id");
-            var size = $(itemProduct.querySelector('label')).attr("data-value");
-            var name = $(itemProduct.querySelector('.catalog-product__name')).text();
-            var inputName = $('#nameProduct');
-            var inputSize = $('#sizeProduct');
-            var inputId = $('#idProduct');
-            inputName.val(name);
-            inputSize.val(size);
-            inputId.val($(this).attr('data-id'));
-            inputName.attr('disabled', true);
+
+
+    function close (e) {
+        if(e.target == this) {
+            $(id_modal).find('.b-popup').slideUp(time, function () {
+                $(id_modal).removeClass('b-open-bg');
+                checkClose(this);
+            });
+        } else if (e.keyCode == 27 && $(id_modal).hasClass("b-open-bg")) {
+            $(id_modal).find('.b-popup').slideUp(time, function () {
+                $(id_modal).removeClass('b-open-bg');
+                checkClose(this);
+            })
         }
-        $('#carousel').addClass('down-index');
-        $(id_modal).find('.b-popup').slideDown(time);
-    });
+    }
+
+    function checkClose (e) {
+        var txt = $(e).find("#success").text();
+        if (txt.trim() != "") {
+            $(e).find("#success").text("");
+            if ($(e).find("#success").hasClass('success')) {
+                $(e).find('input').val("");
+            }
+        }
+        $('#carousel').removeClass('down-index');
+    }
 
     (function() {
         var btnModal = $('.popup-form__btn');
@@ -45,13 +49,13 @@ $(".maskphone").mask('+7(999) 999 99-99');
                 var data = {
                     phone: "телефон",
                     user: "имя",
-                    product: "название товара",                    
+                    product: "название товара",
                 };
 
                 inputs.each(function(index, item) {
                     var val = $(item).val().trim();
                     if(val == '' && !!$(item).attr('data-required')) {
-                        errors[$(item).attr('name')] = "Поле " + data[$(item).attr('name')] + " не заполнено";  
+                        errors[$(item).attr('name')] = "Поле " + data[$(item).attr('name')] + " не заполнено";
                     } else if(val != '') {
                         var patt = /^\+7[\d\(\)\ -]{4,14}\d$/;
                         if ($(item).attr('name') == "phone" && !patt.test(val)) {
@@ -62,7 +66,7 @@ $(".maskphone").mask('+7(999) 999 99-99');
                 });
 
                 result.ajax = "Y";
-                
+
                 if ($.isEmptyObject(errors)) {
                     messageBlock.removeClass('error');
                     messageBlock.text('');
@@ -95,34 +99,119 @@ $(".maskphone").mask('+7(999) 999 99-99');
         });
     })();
 
-    function close (e) {
-        if(e.target == this) {
-            $(id_modal).find('.b-popup').slideUp(time, function () {
-                $(id_modal).removeClass('b-open-bg');
-                checkClose(this);
-            });
-        } else if (e.keyCode == 27 && $(id_modal).hasClass("b-open-bg")) {
-            $(id_modal).find('.b-popup').slideUp(time, function () {
-                $(id_modal).removeClass('b-open-bg');
-                checkClose(this);
-            })
-        }
-    }
+    /*
+    * Функция добавляет обработчики для товаров
+    * */
+    function hundlers() {
+        $('.dropdown ul li').on('click', function() {
+            var label = $(this).parent().parent().children('label');
+            label.attr('data-value', $(this).attr('data-value'));
+            label.html($(this).html());
 
-    function checkClose (e) {
-        var txt = $(e).find("#success").text();
-        if (txt.trim() != "") {
-            $(e).find("#success").text("");
-            if ($(e).find("#success").hasClass('success')) {
-                $(e).find('input').val("");
+            $(this).parent().children('.selected').removeClass('selected');
+            $(this).addClass('selected');
+        });
+
+        $('.dropdown').on('click', function() {
+            $(this).toggleClass('open');
+        });
+
+        $(".popup").on('click', function () {
+            var itemProduct = this.closest('.catalog-product__box');
+
+            id_modal = this.getAttribute('data-popup');
+            $('.owl-item').addClass("fixed");
+            $(id_modal).addClass('b-open-bg');
+
+            if(itemProduct) {
+                var idProduct = $(this).attr("data-id");
+                var size = $(itemProduct.querySelector('label')).attr("data-value");
+                var name = $(itemProduct.querySelector('.catalog-product__name')).text();
+                var inputName = $('#nameProduct');
+                var inputSize = $('#sizeProduct');
+                var inputId = $('#idProduct');
+                inputName.val(name);
+                inputSize.val(size);
+                inputId.val($(this).attr('data-id'));
+                inputName.attr('disabled', true);
             }
-        }
-        $('#carousel').removeClass('down-index');
+            $('#carousel').addClass('down-index');
+            $(id_modal).find('.b-popup').slideDown(time);
+        });
     }
 
     close_btn.on('click', close);
     popup_bg.on('click', close);
     $(document.body).on('keyup', close);
+
+    (function () {
+        var btn = $('#sendAjax');
+        btn.on('click', function (e) {
+            var spinner = $('#spinner');
+            var block = $('.block_more');
+            $(this).css({'display':'none'});
+            block.append(spinner);
+            spinner.css({'display':'inline-block'});
+            e.preventDefault();
+            var tmpl = $('#product-content'),
+                _this = this;
+            $.ajax({
+                url: '/',
+                method: 'POST',
+                data: {VALUE: $(this).attr('data-more'), AJAX: "Y"},
+                success: function (res) {
+
+                    var data = JSON.parse(res),
+                        str = '',
+                        items = data.items,
+                        page = data.page;
+
+                    if (data && Array.isArray(items)) {
+                        items.forEach(function(item, i) {
+
+                            str += '<div class="col-10 col-lg-4 col-md-6 added_item">' +
+                                '<div class="catalog-product__box">' +
+                                '<div class="catalog-product__img" style="background-image: url('+ item.image +');"></div>' +
+                                '<p class="catalog-product__name" data-content="title">'+ item.name +'</p>' +
+                                '<div class="catalog-product__box-bootom">' +
+                                '<span class="catalog-product__price">Цена:&nbsp;'+item.show_price+'</span>' +
+                                '<div class="catalog-product__box-sizes">' +
+                                '<div class="wrapper">' +
+                                ' <div class="dropdown">' +
+                                '<label data-value="">Выберите размер</label>' +
+                                '<ul>';
+
+                            item.size.forEach(function (elem) {
+                                str += '<li>' + elem + '</li>';
+                            });
+
+                            str += '</ul></div></div></div></div>' +
+                                '<span class="catalog-product__box-avl">В наличии: '+ item.avl +'</span>' +
+                                '<a href="javascrip:void(0)" data-id="'+ item.id_product +'" data-popup="#header_modal-product" class="catalog-product__btn button_servis popup">Заказать</a></div></div>';
+                        });
+
+
+
+                        $(_this).attr('data-more', page);
+                        tmpl.append(str);
+                        $('.added_item').slideDown(400, function () {
+                            $(this).removeClass('added_item');
+                        });
+                        spinner.css({'display':'none'});
+                        $(_this).css({'display':'inline-block'});
+                        if (!page) {
+                            $(_this).fadeOut(function () {
+                                $(this).remove();
+                            });
+                        }
+                        hundlers();
+                    }
+                }
+            });
+        });
+    })();
+
+    hundlers();
 
 })();
 
@@ -154,11 +243,21 @@ $(".maskphone").mask('+7(999) 999 99-99');
 })();
 
 (function() {
+
+    var owlObj = {
+        formalization: {
+
+        },
+        carousel: {
+
+        }
+    }
+
     $(document).ready(function(){
-        $(".owl-carousel").owlCarousel({
+        $("#carousel").owlCarousel({
             items:3,
             loop: true,
-            //autoplay: true,
+            autoplay: true,
             center: true,
             responsive : {
                 0: {
@@ -171,20 +270,19 @@ $(".maskphone").mask('+7(999) 999 99-99');
                 }
             }
         });
+
+        $("#formalization").owlCarousel({
+            
+            responsive : {
+                0: {
+                    items: 2,
+                    center: false,
+                    margin: 5
+                },
+                768: {
+                    items: 3,
+                }
+            }
+        });
       });
 })();
-
-$(function() {
-    $('.dropdown ul li').on('click', function() {
-        var label = $(this).parent().parent().children('label');
-        label.attr('data-value', $(this).attr('data-value'));
-        label.html($(this).html());
-
-        $(this).parent().children('.selected').removeClass('selected');
-        $(this).addClass('selected');
-    });
-
-    $('.dropdown').on('click', function() {
-        $(this).toggleClass('open');
-    });
-});

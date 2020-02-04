@@ -41,8 +41,14 @@ ul {
     padding: 10px 30px;
     border-radius: 50px;
     transition: background-color .25s linear;
+    cursor: pointer;
     &:hover {
         background-color: #459114;
+    }
+
+    &:focus,
+    &:active {
+        outline: none;
     }
 }
 
@@ -287,6 +293,7 @@ ul {
     background-color: #f9f9f9;
     &__box {
         text-align: center;
+        padding-bottom: 30px;
     }
     &__block {
         display: flex;
@@ -384,6 +391,7 @@ ul {
         margin-bottom: 45px;
     }
 }
+
 
 .b-footer {
     background-color: #ececec;
@@ -617,7 +625,7 @@ ul {
             list-style: none;
             position: absolute;
             width: 100%;
-            z-index: 1;
+            z-index: 2;
             li {
                 padding: 0px 16px;
                 background: #fff;
@@ -660,4 +668,114 @@ ul {
         }
     }
 }
+
+.formalization {
+    margin: 70px 0 55px 0;
+    &__tablet {
+        @include media-breakpoint-down(sm) {
+            display: none;
+        }
+    }
+    &__item {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    &__block {
+        @include media-breakpoint-down(sm) {
+            padding-left: 14px;
+        }
+    }
+
+    &__block:last-child {
+        .formalization__item {
+            justify-content: flex-start;
+        }
+    }
+
+    &__title {
+        border: 1px solid #ccc;
+        border-radius: 20px;
+        box-shadow: 0px 8px 15px 0px rgba(9, 139, 0, 0.49);
+        padding: 20px
+    }
+
+    &__arrow {
+        @include media-breakpoint-down(md) {
+            width: 105px
+        }
+        @include media-breakpoint-down(sm) {
+            width: 137px !important;
+            padding-left: 10px;
+        }
+        @include media-breakpoint-down(xs) {
+            width: 75px !important;
+            padding-left: 10px;
+        }
+    }
+    &__offer {
+        text-align: center;
+        font-weight: bold;
+        font-size: 1.1em;
+        margin-top: 15px;
+        &-link {
+            text-decoration: underline;
+            color: green;
+        }
+    }
+}
+
+.frontier {
+    border: 1px solid rgba(69,145,20,0.35);
+}
+
+#formalization {
+    display: none;
+    @include media-breakpoint-down(sm) {
+        display: block;
+    }
+}
+
+.added_item {
+    display: none;
+}
+
+.lds-ring {
+    display: none;
+    position: relative;
+    width: 34px;
+    height: 34px;
+    div {
+        box-sizing: border-box;
+        display: block;
+        position: absolute;
+        width: 34px;
+        height: 34px;
+
+        border: 5px solid #6bbd14;
+        border-radius: 50%;
+        animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+        border-color: #6bbd14 transparent transparent transparent;
+
+        &:nth-child(1) {
+            animation-delay: -0.45s;
+        }
+        &:nth-child(2) {
+            animation-delay: -0.3s;
+        }
+        &:nth-child(3) {
+            animation-delay: -0.15s;
+        }
+    }
+}
+
+@keyframes lds-ring {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
 

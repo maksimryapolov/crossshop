@@ -7,12 +7,25 @@ use PHPMailer\PHPMailer\SMTP;
 
 class MainModel extends Model
 {
-    public function getListProduct ()
+
+    const SHOW_COUNTER = 2;
+    protected $page;
+
+    public function getListProduct ($page)
     {
         $result = array();
         $errors = array();
+        $this->page = $page;
+
         $pdo = Db::connect();
-        $stmt = $pdo->query("SELECT * FROM product");
+        $limit = self::SHOW_COUNTER;
+        $offset = ($page - 1) * self::SHOW_COUNTER;
+
+        $stmt = $pdo->prepare("SELECT * FROM product LIMIT :count OFFSET :offset");
+
+        $stmt->bindParam('count', $limit, PDO::PARAM_INT);
+        $stmt->bindParam('offset', $offset, PDO::PARAM_INT);
+        $stmt->execute();
 
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
         {
@@ -24,10 +37,41 @@ class MainModel extends Model
             $result[] = $row;
         }
 
+        if(isset($_REQUEST['AJAX']) && $_REQUEST['AJAX'] === 'Y') {
+            $this->page++;
+            $this->toJson($result, $page);
+        }
+
         if(!empty($result)) {
             return $result;
         }
     }
+
+    private function toJson($param, $page)
+    {
+        $response = false;
+
+        if (!empty($param)) {
+            $response['page'] = $this->checkLastID($param) ? false : $this->page;
+            $response['items'] = $param;
+        }
+
+        echo json_encode($response);
+        die;
+    }
+
+    private function checkLastID ($arParm)
+    {
+        $lastID = $this->getLastId();
+
+        foreach ($arParm as $arElem) {
+            if($arElem['id_product'] == $lastID) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 
     public function getSlideProduct ()
     {
@@ -44,6 +88,15 @@ class MainModel extends Model
             return $result;
         }
     }
+
+    private function getLastId()
+    {
+        $pdo = Db::connect();
+        $stmt = $pdo->query('SELECT MAX(id_product) FROM product');
+        $res = $stmt->fetch();
+        return intval($res["MAX(id_product)"]);
+    }
+
 
     private function sizeProcessing ($size)
     {

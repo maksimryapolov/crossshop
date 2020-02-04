@@ -31,7 +31,7 @@
                 <div class="col-lg-6 advantages-main__image-block">
                     <img src="./dist/images/advantages.jpg" class="advantages-main__img" alt="">
                 </div>
-                <div class="col-lg-6">
+                <div class="col-lg-6" >
                     <div class="advantages-main__box">
                         <h2 class="advantages-main__title">Почему стоит купить у нас</h2>
                         <div class="advantages-main__description">
@@ -73,7 +73,7 @@
                             Ниже представлены модели из нашего ассортимента. Свяжитесь с нами, чтобы получить более бодробную информацию.
                         </div>
                         <div class="catalog-product__container">
-                            <div class="row catalog__block">
+                            <div class="row catalog__block" id="product-content">
                                 <? foreach ($result as $item): ?>
                                     <div class="col-10 col-lg-4 col-md-6">
                                         <div class="catalog-product__box">
@@ -110,6 +110,12 @@
                                         </div>
                                     </div>
                                 <? endforeach; ?>
+
+                            </div>
+                            <div class="block_more">
+                                <button class="button_servis" data-more="<?= $page; ?>" id="sendAjax">
+                                    Показать еще
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -129,5 +135,100 @@
         </div>
     </section>
 </main>
+
+<div class='formalization'>
+    <div class="container">
+        <div class="row owl-carousel owl-theme formalization__tablet" >
+            <div class="col-md-4 formalization__block">
+                <div class="formalization__item">
+                    <div class="formalization__title">
+                    <b>Шаг 1</b> 
+                    </div>
+                    <img src="./dist/images/svg/arrow.svg" class="formalization__arrow" alt="arrow">
+                </div>
+                <div class="formalization__bottom">
+                    <h3>Выберите товар</h3>
+                    <p class="formalization__desc">
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Commodi necessitatibus a modi deserunt perspiciatis architecto placeat quidem consequuntur.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4 formalization__block">
+                <div class="formalization__item">
+                    <div class="formalization__title">
+                    <b>Шаг 2</b> 
+                    </div>
+                    <img src="./dist/images/svg/arrow.svg" class="formalization__arrow" alt="arrow">
+                </div>
+                <div class="formalization__bottom">
+                    <h3>Заполните форму</h3>
+                    <p class="formalization__desc">
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Commodi necessitatibus a modi deserunt perspiciatis architecto placeat quidem consequuntur.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4 formalization__block">
+                <div class="formalization__item">
+                    <div class="formalization__title">
+                        <b> Шаг 3</b>
+                        </div>
+                </div>
+                <div class="formalization__bottom">
+                    <h3>Ожидайте звонка</h3>
+                    <p class="formalization__desc">
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Commodi necessitatibus a modi deserunt perspiciatis architecto placeat quidem consequuntur.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="row owl-carousel owl-theme" id='formalization'>
+            <div class="formalization__block">
+                <div class="formalization__item">
+                    <div class="formalization__title">
+                    <b>Шаг&nbsp;1</b> 
+                    </div>
+                    <img src="./dist/images/svg/arrow.svg" class="formalization__arrow" alt="arrow">
+                </div>
+                <div class="formalization__bottom">
+                    <h3>Выберите пару</h3>
+                    <p class="formalization__desc">
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Commodi necessitatibus a modi deserunt perspiciatis architecto placeat quidem consequuntur.
+                    </p>
+                </div>
+            </div>
+            <div class="formalization__block">
+                <div class="formalization__item">
+                    <div class="formalization__title">
+                    <b>Шаг&nbsp;2</b> 
+                    </div>
+                    <img src="./dist/images/svg/arrow.svg" class="formalization__arrow" alt="arrow">
+                </div>
+                <div class="formalization__bottom">
+                    <h3>Заполните форму</h3>
+                    <p class="formalization__desc">
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Commodi necessitatibus a modi deserunt perspiciatis architecto placeat quidem consequuntur.
+                    </p>
+                </div>
+            </div>
+            <div class="formalization__block">
+                <div class="formalization__item">
+                    <div class="formalization__title">
+                        <b> Шаг&nbsp;3</b>
+                        </div>
+                </div>
+                <div class="formalization__bottom">
+                    <h3>Ожидайте звонка</h3>
+                    <p class="formalization__desc">
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Commodi necessitatibus a modi deserunt perspiciatis architecto placeat quidem consequuntur.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <hr class="frontier">
+        <div class="formalization__offer">
+            А&nbsp;так&nbsp;же, мы&nbsp;не&nbsp;можем отказать оформить заказ такому красавчику через <a href="https://vk.com/cross_shop31" class="formalization__offer-link" target="_blank">социальную сеть</a>
+        </div>
+    </div>
+</div>
 
 <?php require_once ROOT . "/application/views/layouts/footer.php"?>
