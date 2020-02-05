@@ -8,7 +8,7 @@ use PHPMailer\PHPMailer\SMTP;
 class MainModel extends Model
 {
 
-    const SHOW_COUNTER = 2;
+    const SHOW_COUNTER = 3;
     protected $page;
 
     public function getListProduct ($page)
